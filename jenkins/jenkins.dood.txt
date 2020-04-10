@@ -1,0 +1,1 @@
+docker container run --name jenkins -d --restart always --network jenkins -p 8094:8080 -p 50000:50000 -v /var/local/docker/volumes/jenkins:/var/jenkins_home jenkins/jenkins:2.230-jdk11
