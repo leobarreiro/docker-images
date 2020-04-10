@@ -1,3 +1,4 @@
+apache-httpcomponents-client-4-api:latest
 credentials:latest
 workflow-scm-step:latest
 scm-api:latest
