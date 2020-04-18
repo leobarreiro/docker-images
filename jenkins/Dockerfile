@@ -1,11 +1,14 @@
-FROM jenkins/jenkins:lts-jdk11
- 
+FROM jenkins/jenkins:lts-alpine
+
 USER root
-RUN apt-get update \
-      && apt-get install -y sudo \
-      && rm -rf /var/lib/apt/lists/*
-RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
- 
+COPY plugins.txt /plugins.txt
+
+RUN apk update \
+    && apk upgrade \
+    && apk add --no-cache su-exec \
+    && apk add sudo \ 
+    && echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers \
+    && /usr/local/bin/plugins.sh /plugins.txt 
+
 USER jenkins
-COPY plugins.txt /usr/share/jenkins/plugins.txt
-RUN /usr/local/bin/install-plugins.sh /usr/share/jenkins/plugins.txt
+

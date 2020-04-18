@@ -2,7 +2,14 @@ apache-httpcomponents-client-4-api:latest
 credentials:latest
 workflow-scm-step:latest
 scm-api:latest
-git-client:latest
+mailer:latest
 git:latest
+git-client:latest
+jquery:latest
+git-parameter:latest
 greenballs:latest
+ssh:latest
+config-file-provider
+managed-scripts:latest
+simple-theme-plugin:latest
 
