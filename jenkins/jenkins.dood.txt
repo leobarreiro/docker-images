@@ -1,6 +1,0 @@
-docker container run --name jenkins -d --restart always --network jenkins -p 8094:8080 -p 50000:50000 -v /var/local/docker/volumes/jenkins:/var/jenkins_home jenkins/jenkins:2.230-jdk11
-
-docker build -t botzkins:0.0.1 .
-
-
-docker container run --name botzkins -d --restart always --network jenkins -p 8094:8080 -p 50000:50000 -m 2048m -v /var/local/docker/volumes/jenkins:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -v $(which docker):/usr/bin/docker botzkins:0.0.1
