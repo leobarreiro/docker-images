@@ -1,11 +1,6 @@
 #!/bin/sh
 
-CONTAINER_NAME=quasarci
-NETWORK_NAME=jenkins
-HTTP_PORT=8094
-IMAGE_NAME=quasarbot/jenkins
-IMAGE_TAG=latest
-VOLUMEDIR=/var/local/docker/volumes/ci
+. "./vars.sh"
 
 mkdir -p $VOLUMEDIR
 chown $USER:$USER $VOLUMEDIR -R

@@ -28,7 +28,8 @@ PLUGINS_LIST=("apache-httpcomponents-client-4-api"
     "credentials" "workflow-scm-step" "scm-api" 
     "mailer" "git" "git-client" "jquery" "git-parameter" 
     "greenballs" "ssh" "config-file-provider" "managed-scripts" 
-    "simple-theme-plugin")
+    "simple-theme-plugin" "extensible-choice-parameter" 
+    "docker-build-step")
 
 echo "Downloading plugins..."
 
