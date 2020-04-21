@@ -1,0 +1,35 @@
+version: '3.7'
+services:
+  jenkins:
+    image: quasarbot/jenkins:1.0.1
+    volumes:
+      - /var/local/docker/volumes/ci:/var/quasar/ci
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/bin/docker:/usr/bin/docker
+    ports:
+      - "8095:8080"
+      - "50000:50000"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 2048M
+        reservations:
+          cpus: '0.20'
+          memory: 512M
+      mode: replicated
+      replicas: 1
+    healthcheck:
+      test: /healthcheck.sh
+      interval: 2m
+      timeout: 10s
+      retries: 3
+      start_period: 3m
+    networks:
+      - jenkins
+    labels:
+      com.quasarbot.ci.environment: "prod"
+      com.quasarbot.ci.description: "Jenkins"
+networks:
+  jenkins:
+
