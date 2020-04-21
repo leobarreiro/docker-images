@@ -9,8 +9,15 @@ if [ $# -ne 3 ]; then
     exit 1
 fi
 
-URLCLI="$1/jnlpJars/jenkins-cli.jar"
-if wget -qO ./jenkins-cli.jar "$URLCLI"; then 
+echo "Starting plugins installation..."
+
+JNKURL=$1
+JNKURLCLI="$JNKURL/jnlpJars/jenkins-cli.jar"
+JNKUSER=$2
+JNKPASSWD=$3
+
+echo "Downloading jenkins-cli..."
+if wget -qO ./jenkins-cli.jar "$JNKURLCLI"; then 
     echo "jenkins-cli downloaded successful"
 else 
     echo "Error when download jenkins-cli"
@@ -23,11 +30,12 @@ PLUGINS_LIST=("apache-httpcomponents-client-4-api"
     "greenballs" "ssh" "config-file-provider" "managed-scripts" 
     "simple-theme-plugin")
 
+echo "Downloading plugins..."
+
 for PLG in ${PLUGINS_LIST[@]}; do
-    java -jar jenkins-cli.jar -s $1 -auth $2:$3 install-plugin $PLG:latest
+    java -jar jenkins-cli.jar -s $JNKURL -auth $JNKUSER:$JNKPASSWD install-plugin $PLG:latest
 done
 
-java -jar jenkins-cli.jar -s $1 -auth $2:$3 safe-restart
+java -jar jenkins-cli.jar -s $JNKURL -auth $JNKUSER:$JNKPASSWD safe-restart
 echo "Sent command to safe-restart jenkins after install plugins."
 echo "Please wait until jenkins restarts."
-exit 0
