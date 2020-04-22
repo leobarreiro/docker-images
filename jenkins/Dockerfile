@@ -19,7 +19,7 @@ RUN apt-get update \
   && apt-get install curl -y \ 
   && apt-get install git -y \ 
   && apt-get install maven -y \ 
-  && apt-get install openjdk-11-jre -y \ 
+  && apt-get install openjdk-11-jdk -y \ 
   && mkdir -p /usr/share/jenkins \ 
   && chmod +x /entrypoint.sh \ 
   && chmod +x /healthcheck.sh \ 

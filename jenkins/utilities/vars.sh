@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export IMAGE_TAG=1.0.1
+export IMAGE_TAG=1.0.2
 export CONTAINER_NAME=quasarci
 export NETWORK_NAME=jenkins
 export IMAGE_NAME=quasarbot/jenkins
